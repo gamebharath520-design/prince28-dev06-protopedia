@@ -36,4 +36,5 @@ filterwarnings = ["ignore:Using `httpx` with `starlette.testclient`"]
 [dependency-groups]
 dev = [
     "pre-commit>=4.7.0",
+    "ruff>=0.17.5",
 ]
