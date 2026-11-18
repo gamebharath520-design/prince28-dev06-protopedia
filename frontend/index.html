@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSpace</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background: white;
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 26px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8%;
+            gap: 40px;
+        }
+
+        .content {
+            max-width: 500px;
+        }
+
+        .content h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+        }
+
+        .services {
+            text-align: center;
+            padding: 60px 8%;
+        }
+
+        .services h2 {
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 12px;
+            flex: 1;
+            box-shadow: 0 4px 15px #00000010;
+        }
+
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #172554;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content h1 {
+                font-size: 34px;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2 class="logo">TechSpace</h2>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="content">
+            <h1>Build Your Future With Technology</h1>
+
+            <p>
+                Explore innovative ideas, learn new skills,
+                and create something amazing with technology.
+            </p>
+
+            <button>Get Started</button>
+        </div>
+
+        <div class="image">
+            <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
+                alt="Developer workspace">
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>What We Offer</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Build modern and responsive websites.</p>
+            </div>
+
+            <div class="card">
+                <h3>UI / UX Design</h3>
+                <p>Create beautiful and user-friendly designs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Programming</h3>
+                <p>Learn coding and solve real-world problems.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 TechSpace. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
