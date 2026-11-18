@@ -1,202 +1,246 @@
 [
   {
     "id": "001",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 1034,
+    "title": "Domain Names - Concepts and Facilities",
+    "status": "Internet Standard",
+    "obsoletes": ["RFC 882", "RFC 883", "RFC 973"],
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "1. Introduction; 3. Name Space Specifications",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc1034.html"
   },
   {
     "id": "002",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 1035,
+    "title": "Domain Names - Implementation and Specification",
+    "status": "Internet Standard",
+    "obsoletes": ["RFC 882", "RFC 883", "RFC 973"],
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "3. DOMAIN NAME SPACE AND RESOURCE RECORDS; 4. MESSAGES",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc1035.html"
   },
   {
     "id": "003",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 6891,
+    "title": "Extension Mechanisms for DNS (EDNS(0))",
+    "status": "Proposed Standard",
+    "obsoletes": ["RFC 2671"],
     "obsoleted_by": null,
-    "updates": null,
-    "section": null
+    "updates": ["RFC 1035"],
+    "section": "4. OPT Pseudo-RR; 6. Extended DNS Label Types",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc6891.html"
   },
   {
     "id": "004",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 7766,
+    "title": "DNS Transport over TCP - Implementation Requirements",
+    "status": "Proposed Standard",
+    "obsoletes": ["RFC 5966"],
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "6. TCP Connection Reuse; 7. TCP Performance",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc7766.html"
   },
   {
     "id": "005",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 7858,
+    "title": "Specification for DNS over Transport Layer Security (TLS)",
+    "status": "Proposed Standard",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "3. Usage Profile; 4. Authentication",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc7858.html"
   },
   {
     "id": "006",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 8484,
+    "title": "DNS Queries over HTTPS (DoH)",
+    "status": "Experimental",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "4. Protocol; 5. HTTP Integration",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc8484.html"
   },
   {
     "id": "007",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 9293,
+    "title": "Transmission Control Protocol (TCP)",
+    "status": "Internet Standard",
+    "obsoletes": [
+      "RFC 793",
+      "RFC 879",
+      "RFC 2873",
+      "RFC 6093",
+      "RFC 6429",
+      "RFC 6528",
+      "RFC 6691"
+    ],
     "obsoleted_by": null,
-    "updates": null,
-    "section": null
+    "updates": ["RFC 1011", "RFC 1122", "RFC 5961"],
+    "section": "3. Functional Specification; 3.10. Connection Establishment",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9293.html"
   },
   {
     "id": "008",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 9000,
+    "title": "QUIC: A UDP-Based Multiplexed and Secure Transport",
+    "status": "Proposed Standard",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "5. Packetization and Reliability; 12. Frames",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9000.html"
   },
   {
     "id": "009",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 9001,
+    "title": "Using TLS to Secure QUIC",
+    "status": "Proposed Standard",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "4. QUIC-TLS Mapping; 5. Packet Protection",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9001.html"
   },
   {
     "id": "010",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 9002,
+    "title": "QUIC Loss Detection and Congestion Control",
+    "status": "Proposed Standard",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "6. Loss Detection; 7. Congestion Control",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9002.html"
   },
   {
     "id": "011",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 9110,
+    "title": "HTTP Semantics",
+    "status": "Internet Standard",
+    "obsoletes": [
+      "RFC 2818",
+      "RFC 7231",
+      "RFC 7232",
+      "RFC 7233",
+      "RFC 7235",
+      "RFC 7538",
+      "RFC 7615",
+      "RFC 7694"
+    ],
     "obsoleted_by": null,
-    "updates": null,
-    "section": null
+    "updates": ["RFC 3864"],
+    "section": "9. Method Definitions; 15. Status Codes",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9110.html"
   },
   {
     "id": "012",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 9111,
+    "title": "HTTP Caching",
+    "status": "Internet Standard",
+    "obsoletes": ["RFC 7234"],
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "2. Overview of Cache Operation; 4. Constructing Responses from Caches",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9111.html"
   },
   {
     "id": "013",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 9112,
+    "title": "HTTP/1.1",
+    "status": "Internet Standard",
+    "obsoletes": ["Portions of RFC 7230"],
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "2. Message; 6. Connection Management",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9112.html"
   },
   {
     "id": "014",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 9113,
+    "title": "HTTP/2",
+    "status": "Proposed Standard",
+    "obsoletes": ["RFC 7540", "RFC 8740"],
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "3. Starting HTTP/2; 4. HTTP Frames",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9113.html"
   },
   {
     "id": "015",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 9114,
+    "title": "HTTP/3",
+    "status": "Proposed Standard",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "3. Connection Setup and Management; 4. HTTP Framing",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9114.html"
   },
   {
     "id": "016",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
-    "obsoleted_by": null,
-    "updates": null,
-    "section": null
+    "rfc_number": 8446,
+    "title": "The Transport Layer Security (TLS) Protocol Version 1.3",
+    "status": "Proposed Standard (Obsolete)",
+    "obsoletes": ["RFC 5077", "RFC 5246", "RFC 6961"],
+    "obsoleted_by": ["RFC 9846"],
+    "updates": ["RFC 5705", "RFC 6066"],
+    "section": "2. Protocol Overview; 4. Handshake Protocol",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc8446.html"
   },
   {
     "id": "017",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
-    "obsoletes": null,
+    "rfc_number": 9846,
+    "title": "The Transport Layer Security (TLS) Protocol Version 1.3",
+    "status": "Proposed Standard",
+    "obsoletes": [
+      "RFC 5077",
+      "RFC 5246",
+      "RFC 6961",
+      "RFC 7627",
+      "RFC 8422",
+      "RFC 8446"
+    ],
     "obsoleted_by": null,
-    "updates": null,
-    "section": null
+    "updates": ["RFC 5705", "RFC 6066"],
+    "section": "1. Introduction; 2. Protocol Overview; 4. Handshake Protocol",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9846.html"
   },
   {
     "id": "018",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 2119,
+    "title": "Key words for use in RFCs to Indicate Requirement Levels",
+    "status": "Best Current Practice",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "2. Requirements Language",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc2119.html"
   },
   {
     "id": "019",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "rfc_number": 8174,
+    "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words",
+    "status": "Best Current Practice",
     "obsoletes": null,
     "obsoleted_by": null,
-    "updates": null,
-    "section": null
+    "updates": ["RFC 2119"],
+    "section": "2. Ambiguity of Uppercase vs Lowercase",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc8174.html"
   },
   {
-    "id": "020",
-    "rfc_number": null,
-    "title": null,
-    "status": null,
+    "id": "021",
+    "rfc_number": 9460,
+    "title": "Service Binding and Parameter Specification via the DNS (SVCB and HTTPS Resource Records)",
+    "status": "Proposed Standard",
     "obsoletes": null,
     "obsoleted_by": null,
     "updates": null,
-    "section": null
+    "section": "2. SVCB and HTTPS RR Types; 7. Service Parameters",
+    "source_url": "https://www.rfc-editor.org/rfc/rfc9460.html"
   }
 ]
