@@ -148,7 +148,7 @@ Two files or lines my coverage report says are never run, and whether they matte
 - Live URL: (https://protopedia.onrender.com)
 - CI run for pull request 1: https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions ((https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions/runs/44707428857))
 - First deploy that ran by itself: (https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions/runs/44699608427)
-- Merge clicked at __:__ → "Smoke test passed" at __:__ → lead time: ___ min
+- Merge clicked at 10:46 → "Smoke test passed" at 10:48 → lead time:  1m 18s
 
 
 ### Smoke test output from that CD run
@@ -162,8 +162,8 @@ Smoke test passed
 
 ### Rollback drill
 
-- Rolled back to sha **abc9c131dab2944e1600c8350c875859d37ced43**: started **[time from Actions run]**, smoke passed **[time from Actions run]** ([calculate] min)
-- Rolled forward to sha **66ac252615f4a71ca5704af88d32b720011a3c42**: **[duration from Actions run] min**
+- Rolled back to sha 524dca931fbf5ad482ea554db046c38d348b5898: started 15.6s, smoke passed 15.8s ([calculate] min)
+- Rolled forward to sha 524dca931fbf5ad482ea554db046c38d348b5898 15.8s
 - During rollback, the database stayed on the newer schema because the rollback redeployed an older application image without reversing database migrations. This is safe as long as the older application remains compatible with the newer database schema.
 
 ### Where my secrets live
