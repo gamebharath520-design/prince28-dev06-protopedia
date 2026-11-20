@@ -4,6 +4,13 @@ Answers 'what does the RFC actually say' for core internet protocols (HTTP, TLS,
 
 **Status:** Day 1 foundation (FastAPI skeleton, quality gates). Live URL from Day 5.
 
+[![CI](https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions/workflows/ci.yml/badge.svg)](https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions/workflows/ci.yml)
+[![Live](https://img.shields.io/website?url=https%3A%2F%2Fprotopedia.onrender.com%2Fhealth&label=live)](https://protopedia.onrender.com/docs)
+[![Uptime (30 days)](https://img.shields.io/uptimerobot/ratio/YOUR-MONITOR-KEY)](https://protopedia.onrender.com/health)
+
+**Live:** https://protopedia.onrender.com · [API docs](https://protopedia.onrender.com/docs) · [health](https://protopedia.onrender.com/health)
+
+
 ## Who it's for
 
 Junior network engineer at a Chennai telecom equipment company who must answer protocol questions from test teams.

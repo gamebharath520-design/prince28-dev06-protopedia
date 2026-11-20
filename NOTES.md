@@ -141,3 +141,37 @@ coverage TOTAL, with integration tests → paste          92%
 Two files or lines my coverage report says are never run, and whether they matter: (2 lines)
     Two examples are scripts/explain.py and scripts/load_db.py, which may have some lines that are not covered by tests.
     They are not necessarily problems because some lines are utility or command-line code that may not be exercised by unit tests.
+
+
+## D05 · CI/CD and going live
+
+- Live URL: (https://protopedia.onrender.com)
+- CI run for pull request 1: https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions ((https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions/runs/44707428857))
+- First deploy that ran by itself: (https://github.com/gamebharath520-design/prince28-dev06-protopedia/actions/runs/44699608427)
+- Merge clicked at __:__ → "Smoke test passed" at __:__ → lead time: ___ min
+
+
+### Smoke test output from that CD run
+
+```text
+ok   /health -> 200
+ok   /ready -> 200 {'status': 'ready', 'checks': {'database': True}}
+ok   /v1/documents?limit=1 -> 200
+Smoke test passed
+```
+
+### Rollback drill
+
+- Rolled back to sha **abc9c131dab2944e1600c8350c875859d37ced43**: started **[time from Actions run]**, smoke passed **[time from Actions run]** ([calculate] min)
+- Rolled forward to sha **66ac252615f4a71ca5704af88d32b720011a3c42**: **[duration from Actions run] min**
+- During rollback, the database stayed on the newer schema because the rollback redeployed an older application image without reversing database migrations. This is safe as long as the older application remains compatible with the newer database schema.
+
+### Where my secrets live
+
+- Neon string: GitHub Secret `DATABASE_URL` + Render environment. Not in Git, not in the image.
+- Render deploy hook: GitHub Secret `RENDER_DEPLOY_HOOK` only.
+
+### Monitoring
+
+- UptimeRobot checks `/health` every 5 minutes; alerts go to my email.
+- One thing that would make my live app faster on its first request: Keeping the Render service warm with regular health checks helps avoid cold-start delays on the free instance.

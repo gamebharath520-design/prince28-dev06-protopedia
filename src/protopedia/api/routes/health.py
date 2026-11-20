@@ -5,6 +5,12 @@ from protopedia.api.deps import DbCheckDep, SettingsDep
 router = APIRouter(tags=["health"])
 
 
+@router.head("/health", include_in_schema=False)
+def health_head() -> Response:
+    """Allow monitoring services to check liveness using HEAD."""
+    return Response(status_code=200)
+
+
 @router.get("/health")
 def health(settings: SettingsDep) -> dict[str, str]:
     """Liveness: is the process alive? Instant. Never touches the DB or the LLM."""
@@ -12,7 +18,7 @@ def health(settings: SettingsDep) -> dict[str, str]:
         "status": "ok",
         "app": settings.app_name,
         "env": settings.app_env,
-        "version": settings.git_sha,  # which commit is live: the smoke test checks this
+        "version": settings.git_sha,
     }
 
 
