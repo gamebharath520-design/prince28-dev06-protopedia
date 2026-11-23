@@ -175,3 +175,45 @@ Smoke test passed
 
 - UptimeRobot checks `/health` every 5 minutes; alerts go to my email.
 - One thing that would make my live app faster on its first request: Keeping the Render service warm with regular health checks helps avoid cold-start delays on the free instance.
+
+
+
+## D06 · Collecting the corpus
+
+- **Start target:** 50 RFCs (HTTP + TLS + DNS)
+- **Collected today:** 1,707 files, 3,881 pages, 16.8 MB
+- **Doors used:** URL list / Git repository / sitemap
+
+### Licence check
+
+| Source | Licence or terms, in my words | May I show full text in answers? |
+|---|---|---|
+| IETF RFC Editor | IETF Trust Legal Provisions allow RFC reproduction with attribution, subject to their terms. | Yes, where permitted by the applicable IETF terms; include attribution and link to the original. |
+| FastAPI GitHub repository | MIT License; reuse, modification and distribution are permitted while preserving the copyright and licence notice. | Yes, while complying with the MIT licence and retaining the required notices. |
+
+### robots.txt
+
+- **Site:** `https://www.rfc-editor.org/` and `https://fastapi.tiangolo.com/`
+- **Its robots.txt says:** I used the downloader's robots.txt checking, but I did not record the exact robots.txt rules in my terminal log.
+- **Was anything blocked for my bot?** No. The final dataset report shows 0 blocked files. I respected the downloader's robots.txt checks.
+
+### Kill and resume
+
+- **Run 1:** I pressed Ctrl+C after 4 files had downloaded.
+- **Run 2:** downloaded=5, skipped=5.
+- **Run 3:** downloaded=0, skipped=10.
+
+### Capacity (from docs/CAPACITY.md)
+
+- **Tokens per page, measured:** 750 tokens.
+- **Full corpus:** 11.25 M tokens, 32,344 chunks, embedding about Rs 184, vectors 99 MB.
+
+### The number that surprised me most, and why
+
+The collected corpus contains 1,707 files and 3,881 pages, but the full target is estimated to need 11.25 million tokens.
+Even a relatively small corpus can require significant storage and embedding resources when scaled up.
+
+### One thing that went wrong today, and how I fixed it
+
+Initially, I used placeholder repository and sitemap URLs (`OWNER/REPO` and `SITE`), which caused repository-not-found and DNS errors.
+I fixed this by using the actual FastAPI GitHub repository and its sitemap URL. The Git repository added 1,696 files, and the sitemap added one URL that I downloaded successfully.

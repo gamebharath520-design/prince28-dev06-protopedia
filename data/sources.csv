@@ -1,0 +1,19 @@
+# Sources for ProtoPedia. One row per file to download. Lines starting with # are notes.
+# Start target: 50 RFCs (HTTP + TLS + DNS)
+# Where to look:
+#   https://www.rfc-editor.org/
+#   https://www.rfc-editor.org/rfc-index.xml
+# Terms on my project card: RFCs may be copied and reproduced with attribution (IETF Trust legal provisions).
+url,source,licence,title
+
+https://www.rfc-editor.org/rfc/rfc8446.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","The Transport Layer Security (TLS) Protocol Version 1.3"
+https://www.rfc-editor.org/rfc/rfc9110.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","HTTP Semantics"
+https://www.rfc-editor.org/rfc/rfc2119.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","Key words for use in RFCs to Indicate Requirement Levels"
+https://www.rfc-editor.org/rfc/rfc9112.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","HTTP/1.1"
+https://www.rfc-editor.org/rfc/rfc9293.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","Transmission Control Protocol (TCP)"
+https://www.rfc-editor.org/rfc/rfc9000.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","QUIC: A UDP-Based Multiplexed and Secure Transport"
+https://www.rfc-editor.org/rfc/rfc1034.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","Domain Names - Concepts and Facilities"
+https://www.rfc-editor.org/rfc/rfc1035.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","Domain Names - Implementation and Specification"
+https://www.rfc-editor.org/rfc/rfc6891.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","Extension Mechanisms for DNS (EDNS(0))"
+https://www.rfc-editor.org/rfc/rfc7858.html,IETF RFC Editor,"IETF Trust Legal Provisions; reproduction with attribution as permitted by the RFC notice","Specification for DNS over Transport Layer Security (TLS)"
+https://fastapi.tiangolo.com/reference/openapi/docs/,FastAPI,MIT License,
