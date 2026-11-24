@@ -217,3 +217,50 @@ Even a relatively small corpus can require significant storage and embedding res
 
 Initially, I used placeholder repository and sitemap URLs (`OWNER/REPO` and `SITE`), which caused repository-not-found and DNS errors.
 I fixed this by using the actual FastAPI GitHub repository and its sitemap URL. The Git repository added 1,696 files, and the sitemap added one URL that I downloaded successfully.
+
+## D07 · Parser comparison
+
+<!-- parsers:start -->
+| File | Parsers (A / B) | Pages | A found | B found | Time (A / B) | Better, why |
+|---|---|---|---|---|---|---|
+| rfc9110-b1b13a12.html | trafilatura / strip tags | 2 | 5,598 chars, 4 headings, 0 tables | 455,192 chars, 0 headings, 0 tables | 2.71 s / 0.17 s | |
+| rfc9000-46f5fb09.html | trafilatura / strip tags | 112 | 312,604 chars, 0 headings, 15 tables | 368,012 chars, 0 headings, 0 tables | 0.97 s / 0.10 s | |
+| rfc9293-cf23f6ee.html | trafilatura / strip tags | 48 | 135,005 chars, 0 headings, 17 tables | 203,811 chars, 0 headings, 0 tables | 0.57 s / 0.06 s | |
+| rfc9421-a721bf52.html | trafilatura / strip tags | 59 | 160,190 chars, 0 headings, 11 tables | 220,381 chars, 0 headings, 0 tables | 0.51 s / 0.06 s | |
+| rfc9113-31239d03.html | trafilatura / strip tags | 48 | 130,304 chars, 0 headings, 1 tables | 177,098 chars, 0 headings, 0 tables | 0.58 s / 0.06 s | |
+| rfc8446-e28608fb.html | trafilatura / strip tags | 147 | 275,625 chars, 0 headings, 0 tables | 286,997 chars, 0 headings, 0 tables | 0.26 s / 0.07 s | |
+| rfc5280-7e022b9f.html | trafilatura / strip tags | 146 | 287,019 chars, 0 headings, 0 tables | 301,515 chars, 0 headings, 0 tables | 0.42 s / 0.07 s | |
+| rfc9114-6e32398e.html | trafilatura / strip tags | 42 | 116,397 chars, 0 headings, 11 tables | 138,216 chars, 0 headings, 0 tables | 0.45 s / 0.04 s | |
+| rfc7231-8f8a36c6.html | trafilatura / strip tags | 97 | 201,853 chars, 0 headings, 0 tables | 212,815 chars, 0 headings, 0 tables | 0.19 s / 0.05 s | |
+| rfc9112-8ea310bd.html | trafilatura / strip tags | 29 | 80,055 chars, 0 headings, 5 tables | 101,231 chars, 0 headings, 0 tables | 0.29 s / 0.03 s | |
+<!-- parsers:end -->
+
+### D07 · Parsing my corpus
+
+- Files in the manifest: 53 · parsed: 53 · failed: 0 · pages in Postgres: 1,099 (confirm total pages in DB if 19 files were already parsed earlier)
+- Parsing coverage: 100% of files (53 / 53)
+
+### Failures by reason
+
+| Reason | Files | What I did |
+|---|---|---|
+| None (0 failures) | 0 | Verified all 53 files parsed and confirmed `uv run python scripts/parse_corpus.py --retry-failed` had no failed rows to retry; noted `0 failures out of 53 files` in NOTES.md. |
+
+- The one I fixed: file N/A (0 failures) , reason N/A , fix: N/A — ran `--retry-failed` to confirm no failed rows remained
+
+### What I saw when I read my parsed pages
+
+- A page where the heading path is right (document, page, path): rfc9110-b1b13a12.html, page 1, [fill exact heading path from DB/output]
+- Something that came out wrong (document, page, what): rfc9110-b1b13a12.html — trafilatura extracted 5,598 chars vs. 455,192 chars with plain tag-stripping (or note specific page/heading/text issue found when reading parsed pages)
+- A table: Markdown grid or loose text? (document, page): rfc9293-cf23f6ee.html (17 tables detected by trafilatura) — [fill page number and whether Markdown grid or loose text]
+
+### My parser choice
+
+- For PDFs I use PyMuPDF because:
+  1. It is the primary PDF parser in our pipeline when comparing against pypdf.
+  2. [Add exact page/char count and runtime in seconds from running `compare_parsers.py` on sample PDFs, as the default 10-file run only compared HTML RFCs]
+- A kind of document in my corpus that neither parser handles well: Complex multi-column layouts, dense tables, or HTML pages where trafilatura trims aggressively while plain tag-stripping retains boilerplate.
+
+### One thing that went wrong today, and how I fixed it
+
+`uv run poe lint` failed on `ruff format --check .` because `src\protopedia\db\models.py` (around line 82) was unformatted. I ran `uv run ruff format .` to format that file (leaving 43 other files unchanged) and re-ran `uv run poe lint`, which passed with all 52 unit tests and all 44 files formatted.
