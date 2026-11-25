@@ -264,3 +264,43 @@ I fixed this by using the actual FastAPI GitHub repository and its sitemap URL. 
 ### One thing that went wrong today, and how I fixed it
 
 `uv run poe lint` failed on `ruff format --check .` because `src\protopedia\db\models.py` (around line 82) was unformatted. I ran `uv run ruff format .` to format that file (leaving 43 other files unchanged) and re-ran `uv run poe lint`, which passed with all 52 unit tests and all 44 files formatted.
+
+### D08 · LLM gateway
+
+- Primary: gemini-3.8-flash (Gemini) · fallback: openai/gpt-oss-20b (Groq)
+- First question on my laptop: first words after **21.12 s**, total **21.75 s**, tokens in **260** / out **683**, cost Rs **0.021318**
+- Same question on my live URL (second, awake request): **Not tested yet**. Day 1 target: under 1.5 s
+
+### Tokens: English against Tamil
+
+| Message | tokens in |
+|---|---|
+| "Hi" (baseline: mostly my system prompt) | Not available |
+| The English sentence | 251 |
+| The same sentence in Tamil | 265 |
+
+- The Tamil message needs about **1.06 times** the tokens of the English one.
+
+### What the model does without my documents
+
+- Question 6 ("Why is our office internet slow today?"): Yes, it declined instead of pretending to know.
+- Its exact words: "I’m sorry, but that question is outside the scope of ProtoPedia."
+- A detail it got wrong or invented (question → what it said → what is true): No specific incorrect factual detail observed in the provided tests.
+- The off-topic question: Yes, it declined in one sentence: "This question is outside the scope of ProtoPedia."
+
+### Fallback and circuit breaker
+
+- With the primary broken: provider **Groq**, fallback **openai/gpt-oss-20b**, first words after **21.12 s**
+- The question at which "llm call gemini … error" stopped appearing in the log: **Not available**
+
+### The bill
+
+- /v1/usage today: calls **Not available**, errors **Not available**, fallbacks **Not available**, cost Rs **Not available**
+- Average per answered question: Rs **Not calculated** (my Day 1 target: under Rs 0.50)
+
+### One thing that went wrong today, and how I fixed it
+
+- Problem: Alembic migration failed because revision `890384e35b2a` was missing.
+- Fix: Recovered the migration chain using revision `636040cf9f90`, generated a new migration `70f87a82a7a6_add_llm_calls.py`, and successfully ran `uv run alembic upgrade head`.
+- Testing: Gateway tests passed (19/19) and all unit tests passed (78/78).
+- Lint: Initially, Ruff formatting failed for two files. Fixed it using `uv run ruff format .` and reran `uv run poe lint` successfully.
