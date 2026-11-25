@@ -270,9 +270,16 @@ class LLMGateway:
         logger.info("llm call %s %s %s", provider.name, provider.model, fields.get("status"))
         if self._recorder:
             try:
+                print("DEBUG: Recording LLM call:", row)
+
                 await self._recorder(row)
+
+                print("DEBUG: LLM call recorded successfully")
             except Exception:  # a broken logbook must never break an answer
                 logger.exception("could not record the llm call")
+                raise
+        print("REQUEST ID:", request_id_ctx.get())
+        print("PROVIDER:", provider.name)
 
     def _result(self, provider, messages, reply: Reply, started: float, attempts: int, index: int):
         # Providers report token counts. If one does not, estimate from the text lengths.
