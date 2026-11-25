@@ -39,6 +39,7 @@ def upgrade() -> None:
         sa.Column("status", sa.String(length=10), nullable=False),
         sa.Column("error", sa.Text(), server_default="", nullable=False),
         sa.Column("tokens_in", sa.Integer(), server_default="0", nullable=False),
+        sa.Column("tokens_out", sa.Integer(), server_default="0", nullable=False),
         sa.Column("latency_ms", sa.Integer(), server_default="0", nullable=False),
         sa.Column(
             "cost_inr",
