@@ -304,3 +304,44 @@ I fixed this by using the actual FastAPI GitHub repository and its sitemap URL. 
 - Fix: Recovered the migration chain using revision `636040cf9f90`, generated a new migration `70f87a82a7a6_add_llm_calls.py`, and successfully ran `uv run alembic upgrade head`.
 - Testing: Gateway tests passed (19/19) and all unit tests passed (78/78).
 - Lint: Initially, Ruff formatting failed for two files. Fixed it using `uv run ruff format .` and reran `uv run poe lint` successfully.
+
+## D09 · Prompt versions compared
+
+<!-- prompts:start -->
+
+| Prompt version | Correct | Accuracy | Invalid replies | Avg tokens in |
+|---|---|---|---|---|
+| classify_v1 | 11/20 | 55% | 0 | 114 |
+| classify_v2 | 15/20 | 75% | 0 | 316 |
+| classify_v3 | 16/20 | 80% | 0 | 452 |
+| classify_v4 | 20/20 | 100% | 0 | 691 |
+
+<!-- prompts:end -->
+
+# D09 · Prompts and structured output
+
+### Router prompt
+
+- My best router prompt: classify_v4 with **20 / 20 (100%)**.
+- What I changed in v4, and what happened to the score: Improved the classification instructions and removed test-question leakage. The score increased from v3's 16/20 (80%) to v4's 20/20 (100%). However, the test questions were found inside the v4 prompt, so the score needs to be treated cautiously.
+- The question my best version still gets wrong (line, wanted, got), and why I think so: No confirmed wrong question in v4's completed results. However, v3 struggled with lines 11 and 12 because office Wi-Fi and file-sharing problems were classified as off_topic instead of personal.
+- A label in my test set that I changed after seeing the results: none.
+- Input tokens per question: v1 not recorded, best version not separately recorded. The v4 comparison made 20 model calls; total input tokens were not provided in the comparison output.
+
+### My contract (DocMeta)
+
+- Fields I kept from my project card: doc_kind, year, language, rfc_number, status, obsoletes, obsoleted_by, updates, section, topics, summary.
+- Fields I deleted, and why they make no sense per document: No deleted fields confirmed from the provided output.
+- The field I tightened, and how: section — limited the list to a maximum of 8 items to prevent validation errors.
+
+### Extraction run
+
+- Prompt version: extract_v2 · documents: 5 ok, 0 repaired, 0 failed (of 5 parsed).
+- Not finished? Why, and how many are left: Finished. All five documents were processed successfully.
+- Most common failure reason, and what I did about it: V1 sometimes returned invalid JSON or exceeded the maximum of 8 section items. I repaired two records. In V2, the extraction completed with zero repairs.
+- A record that was valid but wrong (document, field, what it said, what is true): No confirmed valid-but-wrong record was identified from the provided output. RFC 9293 has an empty section list, but I cannot confirm from this output alone whether that is incorrect.
+- Cost at list price: Rs 0.2152 in total, approximately Rs 0.0430 per document for V2. V1 cost Rs 0.2727 in total.
+
+### One thing that went wrong today, and how I fixed it
+
+The first extraction run using V1 encountered invalid JSON and a section list containing 9 items, exceeding the maximum of 8. I fixed the records through the repair process, created and switched to V2, and reran extraction. V2 successfully processed all five documents without any repairs or failures.
