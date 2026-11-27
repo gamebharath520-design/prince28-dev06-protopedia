@@ -181,7 +181,7 @@ Smoke test passed
 ## D06 · Collecting the corpus
 
 - **Start target:** 50 RFCs (HTTP + TLS + DNS)
-- **Collected today:** 1,707 files, 3,881 pages, 16.8 MB
+- **Collected today:** 50 files, 144 pages, 6.8 MB
 - **Doors used:** URL list / Git repository / sitemap
 
 ### Licence check
@@ -210,7 +210,7 @@ Smoke test passed
 
 ### The number that surprised me most, and why
 
-The collected corpus contains 1,707 files and 3,881 pages, but the full target is estimated to need 11.25 million tokens.
+The collected corpus contains 50 files and 144 pages, but the full target is estimated to need 11.25 million tokens.
 Even a relatively small corpus can require significant storage and embedding resources when scaled up.
 
 ### One thing that went wrong today, and how I fixed it
@@ -345,3 +345,39 @@ I fixed this by using the actual FastAPI GitHub repository and its sitemap URL. 
 ### One thing that went wrong today, and how I fixed it
 
 The first extraction run using V1 encountered invalid JSON and a section list containing 9 items, exceeding the maximum of 8. I fixed the records through the repair process, created and switched to V2, and reran extraction. V2 successfully processed all five documents without any repairs or failures.
+
+### D10 · Queue and worker
+
+- First run: 10 documents queued, finished in 52 s. Done 9, skipped 0, failed 1
+- Pace: 5.2 s per document (INGEST_RPM = 12, INGEST_CONCURRENCY = 2)
+
+### Kill test
+
+- Queued: 20. At the kill: queued 19, running 1, done 0, failed 0
+- After the new worker: done 20 + skipped 0 + failed 0 = 20 (must be 20)
+- Documents in the database: 105, different IDs: 105 (must be equal)
+- The interrupted items came back after 60 s. Why that long: The worker waited for the configured retry or timeout period before processing interrupted jobs again.
+- Why nothing was doubled (one sentence, in my own words): The system checks document IDs before inserting records, so retrying jobs does not create duplicate documents.
+
+### Dead-letter list
+
+| Stage (parse / extract / download / gave up) | Items | What I did |
+|---|---:|---|
+| Parse | 0 | No parser failures were reported. |
+| Extract | 0 | No extraction failures were reported. |
+| Download | 66 | Checked download errors and retried failed jobs. |
+| Gave up | 66 | Reviewed jobs that failed after three attempts. |
+
+### Live ingestion
+
+- ProtoPedia on Render: 5 of 5 documents done, 0 failed. The reasons: All five documents were processed successfully.
+- A request without the token gets status 401 (Unauthorized).
+
+### Week 2 against Monday's estimate
+
+- docs/CAPACITY.md said: 3,881 pages, 2,910,398 tokens. docs/INGEST_REPORT.md says: 4,357 pages, 2,223,598 tokens.
+- The difference, and why: The actual corpus has 476 more pages but 686,800 fewer estimated tokens. This is because the ingested documents have different text densities and average characters per page.
+
+### One thing that went wrong today, and how I fixed it
+
+Redis connection timeouts and a Docker Compose configuration error prevented the worker from starting correctly. I checked the Redis connection, fixed the configuration, and restarted the API and worker services. After that, I continued testing the ingestion process.
