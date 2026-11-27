@@ -71,6 +71,7 @@ skip_covered = true
 
 [tool.poe.tasks]
 dev = "uvicorn protopedia.api.main:create_app --factory --reload --no-access-log"
+worker = "arq protopedia.workers.main.WorkerSettings"
 lint = ["_ruff_check", "_ruff_format"]
 _ruff_check = "ruff check ."
 _ruff_format = "ruff format --check ."
