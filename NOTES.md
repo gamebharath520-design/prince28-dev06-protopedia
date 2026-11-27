@@ -181,7 +181,7 @@ Smoke test passed
 ## D06 · Collecting the corpus
 
 - **Start target:** 50 RFCs (HTTP + TLS + DNS)
-- **Collected today:** 1,707 files, 3,881 pages, 16.8 MB
+- **Collected today:** 50 files, 144 pages, 6.8 MB
 - **Doors used:** URL list / Git repository / sitemap
 
 ### Licence check
@@ -210,7 +210,7 @@ Smoke test passed
 
 ### The number that surprised me most, and why
 
-The collected corpus contains 1,707 files and 3,881 pages, but the full target is estimated to need 11.25 million tokens.
+The collected corpus contains 50 files and 144 pages, but the full target is estimated to need 11.25 million tokens.
 Even a relatively small corpus can require significant storage and embedding resources when scaled up.
 
 ### One thing that went wrong today, and how I fixed it
